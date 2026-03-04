@@ -2,7 +2,7 @@ const productoModel = require('../models/producto.model');
 
 exports.getAll = async (req, res) => {
     try {
-        const productos = await productoModel.getAll();
+        const productos = await productoModel.getProductosConStock();
         res.json(productos);
     } catch (error) {
         res.status(500).json({ message: error.message });
