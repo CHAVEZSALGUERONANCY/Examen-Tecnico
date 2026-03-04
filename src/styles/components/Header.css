@@ -1,0 +1,157 @@
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.menu-toggle {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.notification-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.notification-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ff4757;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.user-menu:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-icon {
+  font-size: 1.25rem;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+/* Media Queries para Tablets */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 0.75rem 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  .topbar-right {
+    gap: 1rem;
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .user-menu {
+    padding: 0.5rem;
+  }
+}
+
+/* Media Queries para Móviles */
+@media (max-width: 480px) {
+  .topbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .page-title {
+    font-size: 1rem;
+  }
+
+  .topbar-left {
+    gap: 0.5rem;
+  }
+
+  .topbar-right {
+    gap: 0.5rem;
+  }
+
+  .menu-toggle {
+    font-size: 1.25rem;
+    padding: 0.4rem;
+  }
+
+  .notification-btn {
+    font-size: 1.1rem;
+    padding: 0.4rem;
+  }
+
+  .notification-badge {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.3rem;
+  }
+
+  .user-icon {
+    font-size: 1.1rem;
+  }
+}
+

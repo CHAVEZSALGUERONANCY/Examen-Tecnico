@@ -1,0 +1,353 @@
+/* Styles for CrearCatalogo page */
+.crear-catalogo-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+  padding: 2rem;
+}
+
+.crear-catalogo-container .container {
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+/* Back button */
+.back-button-container {
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.back-button:hover {
+  color: #111827;
+}
+
+.back-button svg {
+  margin-right: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover svg {
+  transform: translateX(-4px);
+}
+
+/* Main card */
+.crear-catalogo-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* Gradient header */
+.card-header {
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  padding: 1.5rem 2rem;
+}
+
+.card-header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  backdrop-filter: blur(4px);
+}
+
+.header-icon svg {
+  color: white;
+}
+
+.header-title {
+  color: white;
+}
+
+.header-title h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header-title p {
+  color: #bfdbfe;
+  margin-top: 0.25rem;
+}
+
+/* Form content */
+.card-content {
+  padding: 2rem;
+}
+
+/* Error alert */
+.error-alert {
+  background-color: #fef2f2;
+  border-left: 4px solid #dc2626;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.error-alert svg {
+  color: #dc2626;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+}
+
+.error-alert .error-title {
+  color: #b91c1c;
+  font-weight: 500;
+}
+
+.error-alert .error-message {
+  color: #991b1b;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* Form grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Labels */
+.form-label {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.form-label svg {
+  margin-right: 0.5rem;
+  color: #3b82f6;
+}
+
+.form-label .required {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+
+/* Inputs */
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #f9fafb;
+}
+
+.form-input:hover,
+.form-select:hover,
+.form-textarea:hover {
+  background-color: white;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Input with prefix */
+.input-prefix {
+  position: relative;
+}
+
+.input-prefix .prefix {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+}
+
+.input-prefix .form-input {
+  padding-left: 2rem;
+}
+
+/* Textarea */
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Decorative divider */
+.divider {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+}
+
+.divider .divider-line {
+  width: 100%;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .form-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+/* Buttons */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-cancel {
+  background-color: white;
+  border: 2px solid #e5e7eb;
+  color: #374151;
+}
+
+.btn-cancel:hover {
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.btn-submit {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  background: linear-gradient(to right, #2563eb, #1d4ed8);
+  border: none;
+  color: white;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: linear-gradient(to right, #1d4ed8, #1e40af);
+  box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Loading spinner */
+.btn-spinner {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Required fields hint */
+.required-hint {
+  font-size: 0.875rem;
+  color: #6b7280;
+  text-align: right;
+  margin-top: 1rem;
+}
+
+.required-hint span {
+  color: #dc2626;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .crear-catalogo-container {
+    padding: 1rem;
+  }
+
+  .card-header {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .header-title h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+

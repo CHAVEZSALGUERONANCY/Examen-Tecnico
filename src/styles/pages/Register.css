@@ -1,0 +1,166 @@
+/* register.css / login.css */
+.register-container, .login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.register-card, .login-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 450px;
+  padding: 40px;
+}
+
+.register-header, .login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.register-header h1, .login-header h1 {
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.register-header p, .login-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e1e1e1;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+}
+
+.form-group input.error {
+  border-color: #f56565;
+}
+
+.form-group input:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.error-message {
+  display: block;
+  margin-top: 5px;
+  color: #f56565;
+  font-size: 13px;
+}
+
+.error-general {
+  background-color: #fff5f5;
+  border: 1px solid #feb2b2;
+  color: #c53030;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: auto;
+  margin-right: 8px;
+}
+
+.terms-link, .login-link, .register-link, .forgot-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms-link:hover, .login-link:hover, .register-link:hover, .forgot-link:hover {
+  text-decoration: underline;
+}
+
+.register-button, .login-button {
+  width: 100%;
+  padding: 14px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.register-button:hover:not(:disabled), .login-button:hover:not(:disabled) {
+  background: #5a67d8;
+}
+
+.register-button:disabled, .login-button:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+}
+
+.register-footer, .login-footer {
+  text-align: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid #e1e1e1;
+}
+
+.register-footer p, .login-footer p {
+  color: #666;
+  font-size: 14px;
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.success-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.success-message h2 {
+  color: #48bb78;
+  margin-bottom: 10px;
+}
+
+.success-message p {
+  color: #666;
+}
