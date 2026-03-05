@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Save, ArrowLeft, AlertCircle } from 'lucide-react';
-import Card from '../../components/Card';
 import { getById, update as updateCategoria } from '../../service/categoriaService';
-import '../../styles/pages/EditarCatalogo.css';
+import '../../styles/pages/ListaCategorias.css'; // Usamos el mismo CSS
 
 const EditarCategoria = () => {
   const { id } = useParams();
@@ -24,21 +22,16 @@ const EditarCategoria = () => {
 
         console.log('Cargando categoría con ID:', id);
 
-        // Cargar categoría por ID
         const categoriaRes = await getById(id);
         console.log('Respuesta cruda del API:', categoriaRes);
-        console.log('Tipo de respuesta:', typeof categoriaRes);
         
-        // Soporte para respuestas { data: {...} } o directamente el objeto
         let categoriaData = categoriaRes;
         
-        // Si la respuesta tiene propiedad 'data', usarla
         if (categoriaRes && typeof categoriaRes === 'object' && 'data' in categoriaRes) {
           categoriaData = categoriaRes.data;
           console.log('Usando categoriaRes.data:', categoriaData);
         }
         
-        // Si es un array, tomar el primer elemento
         if (Array.isArray(categoriaData) && categoriaData.length > 0) {
           console.log('La respuesta es un array, tomando primer elemento');
           categoriaData = categoriaData[0];
@@ -58,7 +51,6 @@ const EditarCategoria = () => {
         
         console.log('Setting formData:', newFormData);
         setFormData(newFormData);
-        console.log('FormData should be updated now');
       } catch (err) {
         console.error('Error cargando datos:', err);
         setError('Error al cargar los datos de la categoría. Verifica que la categoría exista en la base de datos.');
@@ -89,115 +81,130 @@ const EditarCategoria = () => {
     }
   };
 
-  /* ── Estado: cargando inicial ── */
+  const handleCancel = () => {
+    navigate('/dashboard/categorias');
+  };
+
   if (initialLoading) {
     return (
-      <div className="editar-loading">
-        <div className="editar-loading-spinner" />
+      <div className="lista-categorias-container">
+        <div className="loading">Cargando categoría...</div>
       </div>
     );
   }
 
-  /* ── Estado: error fatal (sin datos) ── */
   if (error && !formData.nombre) {
     return (
-      <div className="editar-catalogo-container">
-        <button
-          onClick={() => navigate('/dashboard/categorias')}
-          className="editar-back-button"
-        >
-          <ArrowLeft size={18} />
-          Volver a categorías
-        </button>
-        <div className="editar-error">
-          <AlertCircle size={16} />
+      <div className="lista-categorias-container">
+        <div className="categorias-header">
+          <h1 className="categorias-title">Editar Categoría</h1>
+          <button onClick={handleCancel} className="btn-primary">
+            ← Volver a Categorías
+          </button>
+        </div>
+        <div className="error">
+          <span style={{ marginRight: '0.5rem' }}>⚠️</span>
           {error}
         </div>
       </div>
     );
   }
 
-  /* ── Vista principal ── */
   return (
-    <div className="editar-catalogo-container">
-      {/* Botón volver */}
-      <button
-        onClick={() => navigate('/dashboard/categorias')}
-        className="editar-back-button"
-      >
-        <ArrowLeft size={18} />
-        Volver a categorías
-      </button>
+    <div className="lista-categorias-container">
+      <div className="categorias-header">
+        <h1 className="categorias-title">Editar Categoría</h1>
+        <button onClick={handleCancel} className="btn-primary">
+          ← Volver a Categorías
+        </button>
+      </div>
 
-      <Card className="editar-card">
-        <h1 className="editar-title">Editar Categoría</h1>
-        <p className="editar-subtitle">Modifica los campos que necesites y guarda los cambios.</p>
-        <hr className="editar-divider" />
-
-        {/* Error inline (no fatal) */}
+      <div className="table-container" style={{ padding: '2rem' }}>
         {error && (
-          <div className="editar-error">
-            <AlertCircle size={16} />
+          <div className="error" style={{ marginBottom: '1.5rem' }}>
+            <span style={{ marginRight: '0.5rem' }}>⚠️</span>
             {error}
           </div>
         )}
 
         <form onSubmit={handleSubmit}>
-          <div className="editar-form-grid">
-
+          <div style={{ maxWidth: '40rem', margin: '0 auto' }}>
             {/* Nombre */}
-            <div className="editar-form-group">
-              <label className="editar-label">
-                Nombre de la Categoría <span className="editar-label-required">*</span>
+            <div className="form-group">
+              <label htmlFor="nombre">
+                Nombre de la Categoría <span style={{ color: '#dc2626' }}>*</span>
               </label>
               <input
+                id="nombre"
                 type="text"
                 name="nombre"
                 required
-                placeholder="Ej. Electrónica"
+                placeholder="Ej. Electrónica, Oficina, Limpieza..."
                 value={formData.nombre}
                 onChange={handleChange}
-                className="editar-input"
               />
             </div>
 
             {/* Descripción */}
-            <div className="editar-form-group full-width">
-              <label className="editar-label">Descripción</label>
+            <div className="form-group">
+              <label htmlFor="descripcion">Descripción</label>
               <textarea
+                id="descripcion"
                 name="descripcion"
                 rows={4}
                 placeholder="Descripción opcional de la categoría..."
                 value={formData.descripcion}
                 onChange={handleChange}
-                className="editar-textarea"
               />
             </div>
-          </div>
 
-          {/* Acciones */}
-          <div className="editar-form-actions">
-            <button
-              type="button"
-              onClick={() => navigate('/dashboard/categorias')}
-              className="editar-btn editar-btn-cancel"
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              disabled={loading}
-              className="editar-btn editar-btn-submit"
-            >
-              <Save size={18} />
-              {loading ? 'Guardando...' : 'Actualizar Categoría'}
-            </button>
+            {/* Acciones */}
+            <div className="modal-actions" style={{ marginTop: '2rem' }}>
+              <button
+                type="button"
+                onClick={handleCancel}
+                className="btn-cancel"
+                style={{
+                  padding: '0.75rem 1.5rem',
+                  backgroundColor: '#f3f4f6',
+                  color: '#374151',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '0.5rem',
+                  cursor: 'pointer',
+                  fontSize: '0.95rem',
+                  fontWeight: 500
+                }}
+              >
+                Cancelar
+              </button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '0.75rem 1.5rem',
+                  opacity: loading ? 0.7 : 1,
+                  cursor: loading ? 'not-allowed' : 'pointer'
+                }}
+              >
+                {loading ? (
+                  'Guardando...'
+                ) : (
+                  <>
+                    <span className="btn-icon">✓</span>
+                    Actualizar Categoría
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </form>
-      </Card>
+      </div>
     </div>
   );
 };
 
 export default EditarCategoria;
-

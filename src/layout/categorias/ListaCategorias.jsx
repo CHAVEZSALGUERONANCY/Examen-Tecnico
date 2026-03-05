@@ -4,7 +4,7 @@ import { getAll as getCategorias, deleteCategoria, create as createCategoria, up
 import '../../styles/pages/ListaCategorias.css';
 
 const ListaCategorias = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const [categorias, setCategorias] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -68,6 +68,8 @@ const ListaCategorias = () => {
         }
     };
 
+    
+
     if (loading) return <div className="loading">Cargando categorías...</div>;
     if (error) return <div className="error">{error}</div>;
 
@@ -76,7 +78,8 @@ const ListaCategorias = () => {
             <div className="categorias-header">
                 <h1 className="categorias-title">Lista de Categorías</h1>
                 <button onClick={handleCrear} className="btn-primary">
-                    Nueva Categoría
+                    <span className="btn-icon">+</span>
+                    <span className="btn-text">Nueva Categoría</span>
                 </button>
             </div>
 
@@ -88,49 +91,90 @@ const ListaCategorias = () => {
                     </button>
                 </div>
             ) : (
-                <div className="table-container">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Descripción</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {categorias.map((categoria) => (
-                                <tr key={categoria.id}>
-                                    <td>{categoria.id}</td>
-                                    <td>{categoria.nombre}</td>
-                                    <td>{categoria.descripcion || '-'}</td>
-                                    <td>
-                                        <div className="action-buttons">
-                                            <button 
-                                                onClick={() => handleVer(categoria)}
-                                                className="btn-view"
-                                            >
-                                                Ver
-                                            </button>
-                                            <button 
-                                                onClick={() => handleEditar(categoria)}
-                                                className="btn-edit"
-                                            >
-                                                Editar
-                                            </button>
-                                            <button 
-                                                onClick={() => handleEliminar(categoria.id)}
-                                                className="btn-delete"
-                                            >
-                                                Eliminar
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                <>
+                    {/* Vista móvil - Tarjetas */}
+                    <div className="categorias-grid-mobile">
+                        {categorias.map((categoria) => (
+                            <div key={categoria.id} className="categoria-card">
+                                <div className="card-header">
+                                    <span className="card-id">#{categoria.id}</span>
+                                    <h3 className="card-title">{categoria.nombre}</h3>
+                                </div>
+                                <p className="card-description">
+                                    {categoria.descripcion || 'Sin descripción'}
+                                </p>
+                                <div className="card-actions">
+                                    <button 
+                                        onClick={() => handleVer(categoria)}
+                                        className="btn-view action-btn-view"
+                                    >
+                                        Ver
+                                    </button>
+                                    <button 
+                                        onClick={() => handleEditar(categoria)}
+                                        className="btn-edit action-btn-edit"
+                                    >
+                                        Editar
+                                    </button>
+                                    <button 
+                                        onClick={() => handleEliminar(categoria.id)}
+                                        className="btn-delete action-btn-delete"
+                                    >
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Vista tablet/desktop - Tabla */}
+                    <div className="table-wrapper">
+                        <div className="table-container">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Descripción</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {categorias.map((categoria) => (
+                                        <tr key={categoria.id}>
+                                            <td data-label="ID">{categoria.id}</td>
+                                            <td data-label="Nombre">{categoria.nombre}</td>
+                                            <td data-label="Descripción">{categoria.descripcion || '-'}</td>
+                                            <td data-label="Acciones">
+                                                <div className="action-buttons">
+                                                    <button 
+                                                        onClick={() => handleVer(categoria)}
+                                                        className="btn-view action-btn-view"
+                                                        title="Ver detalles"
+                                                    >
+                                                        Ver
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => handleEditar(categoria)}
+                                                        className="btn-edit action-btn-edit"
+                                                    >
+                                                        Editar
+                                                    </button>
+                                                    <button 
+                                                        onClick={() => handleEliminar(categoria.id)}
+                                                        className="btn-delete action-btn-delete"
+                                                    >
+                                                        Eliminar
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </>
             )}
 
             {modalOpen && (
@@ -158,28 +202,35 @@ const ModalCategoria = ({ categoria, onClose, onSave }) => {
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <h2>{categoria ? 'Editar Categoría' : 'Nueva Categoría'}</h2>
+                <div className="modal-header">
+                    <h2>{categoria ? 'Editar Categoría' : 'Nueva Categoría'}</h2>
+                    <button className="modal-close" onClick={onClose}>×</button>
+                </div>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label>Nombre:</label>
+                        <label htmlFor="nombre">Nombre:</label>
                         <input
+                            id="nombre"
                             type="text"
                             value={formData.nombre}
                             onChange={(e) => setFormData({...formData, nombre: e.target.value})}
                             required
+                            placeholder="Ingrese el nombre de la categoría"
                         />
                     </div>
                     <div className="form-group">
-                        <label>Descripción:</label>
+                        <label htmlFor="descripcion">Descripción:</label>
                         <textarea
+                            id="descripcion"
                             value={formData.descripcion}
                             onChange={(e) => setFormData({...formData, descripcion: e.target.value})}
                             rows="3"
+                            placeholder="Ingrese una descripción (opcional)"
                         />
                     </div>
                     <div className="modal-actions">
-                        <button type="button" onClick={onClose}>Cancelar</button>
-                        <button type="submit">Guardar</button>
+                        <button type="button" onClick={onClose} className="btn-cancel">Cancelar</button>
+                        <button type="submit" className="btn-save">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -188,4 +239,3 @@ const ModalCategoria = ({ categoria, onClose, onSave }) => {
 };
 
 export default ListaCategorias;
-

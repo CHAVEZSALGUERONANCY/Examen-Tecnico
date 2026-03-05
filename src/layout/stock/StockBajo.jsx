@@ -57,9 +57,7 @@ const StockBajo = () => {
           <h1 className="stock-bajo-title">Productos con Stock Bajo</h1>
           <p className="total-count">Total: {productos.length} producto(s)</p>
         </div>
-        <button className="btn-refresh" onClick={cargarProductosStockBajo}>
-          Actualizar
-        </button>
+        
       </div>
 
       {productos.length === 0 ? (

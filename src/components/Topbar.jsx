@@ -1,11 +1,11 @@
 // src/components/Topbar.jsx
-import { FiMenu, FiBell, FiUser } from 'react-icons/fi';
-import { Link } from 'react-router-dom';
+import { FiMenu, FiBell, FiUser, FiLogOut } from 'react-icons/fi';
+import { Link  } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Topbar = ({ toggleSidebar }) => {
-  const { user } = useAuth();
-  
+  const { user,  } = useAuth();
+
   return (
     <header className="topbar">
       <div className="topbar-left">
@@ -20,6 +20,7 @@ const Topbar = ({ toggleSidebar }) => {
           <FiBell />
           <span className="notification-badge">3</span>
         </button>
+        
         
         <Link to="/dashboard/perfil/" className="user-menu">
           <FiUser className="user-icon" />

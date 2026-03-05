@@ -28,7 +28,12 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
+/* btn-back and btn-edit are defined in Buttons.css */
+/* Custom styles below override for this page */
 
 .btn-back {
   display: flex;
@@ -49,6 +54,7 @@
   margin-right: 0.25rem;
 }
 
+/* Override for warning yellow edit button */
 .btn-edit {
   background-color: #eab308;
   color: white;

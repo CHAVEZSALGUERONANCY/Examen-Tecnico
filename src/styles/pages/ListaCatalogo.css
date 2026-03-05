@@ -1,4 +1,4 @@
-/* Styles for ListaCatalogo page */
+/* Styles for ListaCatalogo page - Using unified button styles from Buttons.css */
 .lista-catalogo-container {
   padding: 1.5rem;
   max-width: 80rem;
@@ -11,32 +11,19 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .page-title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text-primary);
   margin: 0;
 }
 
-/* New product button */
-.btn-new-product {
-  background-color: #2563eb;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
-  text-decoration: none;
-}
-
-.btn-new-product:hover {
-  background-color: #1d4ed8;
-}
+/* Note: Button styles are now in Buttons.css via global.css import */
+/* btn-new-product, btn-apply-filters are defined in Buttons.css */
 
 /* Filters card */
 .filters-card {

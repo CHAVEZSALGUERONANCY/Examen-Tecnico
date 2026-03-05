@@ -346,8 +346,15 @@
     flex-direction: column;
   }
 
+  /* Full width buttons on mobile for better visibility */
   .btn {
     width: 100%;
+  }
+
+  .btn-cancel,
+  .btn-submit {
+    width: 100%;
+    justify-content: center;
   }
 }
 

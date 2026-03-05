@@ -18,24 +18,8 @@
     margin: 0;
 }
 
-.btn-primary {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.btn-primary:hover {
-    background-color: #c82333;
-}
-
-.btn-primary:active {
-    transform: translateY(1px);
-}
+/* Primary button - Now uses unified styles from Buttons.css */
+/* .btn-primary is defined in Buttons.css */
 
 /* Filtros */
 .filtro-container {

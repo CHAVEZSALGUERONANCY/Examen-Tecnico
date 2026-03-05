@@ -94,6 +94,24 @@
   font-weight: 500;
 }
 
+.logout-btn-topbar {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-btn-topbar:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 /* Media Queries para Tablets */
 @media (max-width: 768px) {
   .topbar {

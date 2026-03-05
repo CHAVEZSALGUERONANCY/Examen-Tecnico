@@ -197,8 +197,16 @@
   }
 }
 
-/* Responsive */
+/* Responsive - Full width buttons on mobile */
 @media (max-width: 768px) {
+  .editar-catalogo-container {
+    padding: 0.75rem;
+  }
+
+  .editar-card {
+    padding: 1rem;
+  }
+
   .editar-form-actions {
     flex-direction: column;
   }
@@ -206,6 +214,10 @@
   .editar-btn {
     width: 100%;
     justify-content: center;
+  }
+
+  .editar-form-grid {
+    grid-template-columns: 1fr;
   }
 }
 

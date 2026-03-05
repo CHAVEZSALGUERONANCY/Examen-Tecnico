@@ -325,3 +325,4 @@ const ModalEntrada = ({ productos, onClose, onSave }) => {
 };
 
 export default ListaEntradas;
+

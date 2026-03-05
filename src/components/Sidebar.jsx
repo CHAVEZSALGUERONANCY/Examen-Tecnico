@@ -33,7 +33,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     { path: '/dashboard/salidas', icon: FiTrendingUp, text: 'Salidas' },
     { path: '/dashboard/stock-bajo', icon: FiAlertCircle, text: 'Stock Bajo', badge: 3 },
     { path: '/dashboard/lista-usuario', icon: FiUsers, text: 'ListaUsuario' },
-    { path: '/dashboard/configuracion', icon: FiSettings, text: 'Configuración' },
+   
   ];
 
   return (

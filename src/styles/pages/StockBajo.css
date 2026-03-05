@@ -338,9 +338,15 @@
     gap: 1rem;
   }
 
+  /* Full width buttons on tablet/mobile */
   .btn-refresh {
     width: 100%;
     text-align: center;
+  }
+
+  .btn-editar-stock {
+    width: 100%;
+    justify-content: center;
   }
 
   .stock-table th,

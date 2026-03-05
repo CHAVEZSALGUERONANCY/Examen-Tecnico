@@ -243,6 +243,14 @@
 
 /* Responsive */
 @media (max-width: 640px) {
+  .editar-stock-container {
+    padding: 1rem;
+  }
+
+  .editar-stock-card {
+    padding: 1rem;
+  }
+
   .editar-stock-form-grid {
     grid-template-columns: 1fr;
   }
@@ -254,6 +262,16 @@
   .editar-stock-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Full width buttons on mobile */
+  .editar-stock-form-actions {
+    flex-direction: column;
+  }
+
+  .editar-stock-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
